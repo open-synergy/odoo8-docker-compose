@@ -19,7 +19,7 @@ services:
     environment:
       - DB_USER=odoo
       - DB_PASS=odoo
-      - DB_NAME=odoodb
+      - DB_NAME=odoodb2
       - ADMIN_PASSWD=admin
       - RUNNING_ENV=dev
       - LOG_HANDLER=:WARN
@@ -41,6 +41,13 @@ services:
     image: camptocamp/odoo-nginx:11.0-1.3.0
     ports:
       - 80:80
+    depends_on:
+      - odoo
+
+  aeroo-docs:
+    image: adhoc/aeroo-docs
+    ports:
+      - 8989:8989
     depends_on:
       - odoo
 
